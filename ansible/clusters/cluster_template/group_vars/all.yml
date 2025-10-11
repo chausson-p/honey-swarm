@@ -78,7 +78,7 @@ traefik_dashboard_enabled: false
 # traefik_web_username: traefik
 
 ## CORE
-deploly_portainer: true
+deploy_portainer: true
 
 # Customize Portainer images
 # portainer_image: "portainer/portainer-ee"
