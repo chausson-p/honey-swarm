@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   traefik:
-    image: traefik:v2
+    image: traefik:v3
     volumes:
       - traefik-letsencrypt:/letsencrypt
       - /var/run/docker.sock:/var/run/docker.sock
@@ -20,10 +20,11 @@ services:
 {% if traefik_dashboard_enabled %}
       - --api.dashboard=true
 {% endif %}
-      - --providers.docker=true
-      - --providers.docker.swarmmode=true
-      - --providers.docker.exposedbydefault=false
-      - --providers.docker.network=public-network
+      # In Traefik v3 the Docker provider is split: use the Swarm provider for Docker Swarm
+      - --providers.swarm=true
+      # expose services only when explicitly enabled with labels
+      - --providers.swarm.exposedByDefault=false
+      - --providers.swarm.network=public-network
       - --entrypoints.http.address=:80
       - --entrypoints.https.address=:443
 {% if letsencrypt %}
