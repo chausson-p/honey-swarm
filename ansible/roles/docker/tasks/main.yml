@@ -1,7 +1,8 @@
 ---
 # We require docker to make this work
+
 - name: Installing Docker
-  become: yes
+  become: true
   import_role:
     name: geerlingguy.docker
 

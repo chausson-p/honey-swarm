@@ -3,9 +3,11 @@
 - import_tasks: ufw.yml
 - import_tasks: fail2ban.yml
 
-- name: set timezone to Europe/Helsinki
+# If timezone is defined, set it
+- name: set timezone to {{ timezone }} 
   timezone:
-    name: Europe/Helsinki
+    name: "{{ timezone }}"
+  when: ansible_facts['os_family'] == "Debian" and timezone is defined
 
 # Ensure Password logins are disabled.
 - name: Disable empty password login

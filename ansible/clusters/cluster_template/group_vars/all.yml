@@ -10,6 +10,9 @@ additional_packages:
   - vim
   - htop
 
+# timezone: Europe/Helsinki
+
+# swap_file_size_mb: 1024
 
 ## USERS
 ## -----------------------------------------------------------------------

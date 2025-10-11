@@ -1,4 +1,11 @@
 ---
+
+- name: Setup Swap
+  become: true
+  import_role:
+    name: geerlingguy.swap
+  when: swap_file_size_mb is defined
+
 - name: Install python
   become: true
   package:
